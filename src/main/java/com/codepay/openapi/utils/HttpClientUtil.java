@@ -292,7 +292,6 @@ public class HttpClientUtil {
         if (isSSL) {
             SSLContextBuilder contextBuilder = new SSLContextBuilder().loadTrustMaterial(null,
                     new TrustStrategy() {
-                        @Override
                         public boolean isTrusted(X509Certificate[] chain, String authType) throws CertificateException {
                             return true;
                         }
@@ -301,7 +300,6 @@ public class HttpClientUtil {
                     new String[]{"TLSv1.2"},
                     null,
                     new HostnameVerifier() {
-                        @Override
                         public boolean verify(String host, SSLSession sslSession) {
                             return true;
                         }
