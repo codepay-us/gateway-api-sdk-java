@@ -19,7 +19,7 @@ Suitable for Java language, JDK version 1.8 and above development environment.
 
 ## Usage steps
 
-#### 1. Download the jar package and add it to your project, please refer to github source code
+#### 1. Download the jar and add it to your project, please refer to github source code
 
 <a href="https://github.com/codepay-us/gateway-api-sdk-java/releases/tag/v1.0.0" target="_blank">gateway-api-sdk-java.jar</a><br />
 
