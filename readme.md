@@ -67,7 +67,7 @@ Suitable for Java language, JDK version 1.8 and above development environment.
 </dependency>
 ```
 
-#### 3. Refer to the following sample and develop against the <a href = "./CloudAPI" target = "_blank">cloud API documentation </a>
+#### 3. Refer to the following sample and develop against the <a href = "https://developer.codepay.us/docs/CloudAPI" target = "_blank">cloud API documentation </a>
 
 ```java
 //  Instantiate the client
