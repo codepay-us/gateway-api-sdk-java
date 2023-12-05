@@ -21,7 +21,7 @@ Suitable for Java language, JDK version 1.8 and above development environment.
 
 #### 1. Download the jar package and add it to your project, please refer to github source code
 
-<a href="https://github.com/codepay-us/gateway-api-sdk-java" target="_blank">gateway-api-sdk-java</a><br />
+<a href="https://github.com/codepay-us/gateway-api-sdk-java/releases/tag/v1.0.0" target="_blank">gateway-api-sdk-java.jar</a><br />
 
 ![Javasdk1](src%2Fmain%2Fresources%2FJavasdk1.png)
 ![Javasdk2](src%2Fmain%2Fresources%2FJavasdk2.png)
