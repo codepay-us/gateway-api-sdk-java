@@ -46,6 +46,9 @@ public class WisehubCloudPayOrderRequest extends OpenApiRequest<WisehubCloudPayO
     // Tip Amount
     private Double tip_amount;
 
+    // Whether or not to enter tips on the CodePay Rigister page, default is false, when "trans_type=1, 3, 4", this parameter can be set
+    private Boolean on_screen_tip;
+
     // Transaction type
     private Integer trans_type;
 

@@ -35,6 +35,9 @@ public class OrderQueryResponse extends OpenApiResponse {
     // Tip Amount
     private Double tip_amount;
 
+    // Cashback amount
+    private Double cashback_amount;
+
     // Priced transaction amount
     private Double trans_amount;
 
