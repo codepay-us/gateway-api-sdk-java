@@ -90,5 +90,8 @@ public class WisehubCloudPayOrderRequest extends OpenApiRequest<WisehubCloudPayO
     // Do you need terminal confirmation before proceeding with payment operations? The default is false. When set to true, you need to confirm the order first, otherwise you will directly enter the card reading interface
     private Boolean confirm_on_terminal;
 
+    // Type of bank card, 1-Debit card 2-Credit card 3-Ebt card 4-Gift card
+    private Integer card_type;
+
 
 }
