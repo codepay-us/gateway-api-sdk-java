@@ -93,5 +93,6 @@ public class WisehubCloudPayOrderRequest extends OpenApiRequest<WisehubCloudPayO
     // Type of bank card, 1-Debit card 2-Credit card 3-Ebt card 4-Gift card
     private Integer card_type;
 
-
+    // This parameter controls the display logic of electronic signatures
+    private Boolean on_screen_signature;
 }
