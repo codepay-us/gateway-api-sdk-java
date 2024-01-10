@@ -24,8 +24,9 @@ public class WisehubCloudPayOrderRequest extends OpenApiRequest<WisehubCloudPayO
     // The serial numbers of POS and other devices, need to be bound on the merchant platform in advance
     private String terminal_sn;
 
-    // Payment method category
-    private String pay_method_category;
+    // Payment scene
+    // Enum: "BSCANQR_PAY" "SCANQR_PAY" "SWIPE_CARD"
+    private String pay_scenario;
 
     // Payment Method ID
     private String pay_method_id;
