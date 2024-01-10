@@ -79,7 +79,7 @@ request.setMerchant_no("{Your merchant number}");
 request.setStore_no("{Your store number}");
 request.setTerminal_sn("{Your terminal sn}");
 request.setMessage_receiving_application("CodePay Register");
-request.setPay_method_category("BANKCARD");
+request.setPay_scenario("SWIPE_CARD");
 request.setPrice_currency("USD");
 request.setOrder_amount(34.50);
 request.setTrans_type(1);
