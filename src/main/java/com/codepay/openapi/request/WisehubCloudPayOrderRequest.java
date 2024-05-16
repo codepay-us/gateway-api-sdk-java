@@ -96,4 +96,11 @@ public class WisehubCloudPayOrderRequest extends OpenApiRequest<WisehubCloudPayO
 
     // This parameter controls the display logic of electronic signatures
     private Boolean on_screen_signature;
+
+    // Receeipt printing mode
+    // 0: No printing, default value
+    // 1: Print merchant copy
+    // 2: Print customer copy
+    // 3: Print merchant copy + customer copy
+    private Integer receipt_print_mode;
 }
