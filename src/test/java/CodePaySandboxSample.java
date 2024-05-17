@@ -15,11 +15,11 @@ public class CodePaySandboxSample {
     public void crossTerminalIntegrationCloudModeCreateOrder() {
         OpenApiClient openapiClient = new OpenApiClient(APP_ID, SANDBOX_GATEWAY_URL, APP_RSA_PRIVATE_KEY, GATEWAY_RSA_PUBLIC_KEY);
         WisehubCloudPayOrderRequest request = new WisehubCloudPayOrderRequest();
-        request.setMerchant_no("{Your merchant number}");
-        request.setStore_no("{Your store number}");
-        request.setTerminal_sn("{Your terminal sn}");
+        request.setMerchant_no("302300000926");
+        request.setStore_no("4023000008");
+        request.setTerminal_sn("WPYB002248000865");
         request.setMessage_receiving_application("CodePay Register");
-        request.setPay_method_category("BANKCARD");
+        request.setPay_scenario("SWIPE_CARD");
         request.setPrice_currency("USD");
         request.setOrder_amount(34.50);
         request.setTrans_type(1);
