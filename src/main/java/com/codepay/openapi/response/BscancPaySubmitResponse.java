@@ -65,4 +65,10 @@ public class BscancPaySubmitResponse extends OpenApiResponse {
     // Payment platform serial number
     private String pay_platform_trans_no;
 
+    // Settlement currency
+    private String settlement_currency;
+
+    // Settlement currency trans amount
+    private Double settlement_trans_amount;
+
 }

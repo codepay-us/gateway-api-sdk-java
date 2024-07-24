@@ -76,4 +76,10 @@ public class OrderRefundQueryResponse extends OpenApiResponse {
     // Transaction error message, this parameter appears when trans_status = 1
     private String trans_error_msg;
 
+    // Settlement currency
+    private String settlement_currency;
+
+    // Settlement currency trans amount
+    private Double settlement_trans_amount;
+
 }
