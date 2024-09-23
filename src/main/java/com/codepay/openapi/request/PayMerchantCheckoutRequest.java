@@ -1,0 +1,64 @@
+package com.codepay.openapi.request;
+
+import com.codepay.openapi.response.PayMerchantCheckoutResponse;
+import lombok.Setter;
+import lombok.ToString;
+
+/**
+ * @Auther: liqie
+ * @Date: 2024/7/22 16:40
+ * @Description: For merchants using the merchant-hosted checkout for payment, submit the order information and card details to CodePay. CodePay will
+ * process the payment immediately and return the payment result synchronously. If 3DS authentication is required, the redirect_url_3dsecure will be
+ * returned. Please redirect the user’s request to this URL. After completing the authentication, CodePay will redirect to the merchant’s return_url.
+ * Please handle asynchronous notifications and actively query the order to obtain the payment result.
+ */
+@Setter
+@ToString
+public class PayMerchantCheckoutRequest extends OpenApiRequest<PayMerchantCheckoutResponse> {
+
+    // The unique identifier of the merchant in the system, which will be assigned after the merchant has successfully settled in.
+    // You can log in to the merchant platform to get it
+    private String merchant_no;
+
+    // Merchant requests a serial number, and a request serial number can only request payment once. If the business order needs to
+    // support cancellation and then pay, you should maintain the correspondence between a business order and the payment request serial number
+    private String merchant_order_no;
+
+    // Price currency-ISO three-digit letter code,For example: CNY,USD
+    private String price_currency;
+
+    // Order Amount
+    private Double order_amount;
+
+    // Description of the goods or services of the order
+    private String description;
+
+    // Order payment timeout period, after which the order can no longer be paid or cancelled and the order will be closed, the unit of this time is: second
+    private Integer expires;
+
+    // Bank card payment details. Please encrypt the card_info using CodePay's public key
+
+    // Merchant store identification code, which can be added through the merchant platform, used to record merchant transaction data in a more detailed dimension,
+    // and facilitate merchants to conduct reconciliation and management
+    private String store_no;
+
+    // For additional information of merchants, the system only does transparent transmission, does not do business processing,
+    // payment inquiries and notifications, and the statement download will be returned as it is
+    private String attach;
+
+    // Redirect the URL of the user’s page
+    private String return_url;
+
+    // Specifies the callback address for receiving gateway payment notifications
+    private String notify_url;
+
+    // Terminal IP Address
+    private String term_ip;
+
+    // Address location of the device: longitude
+    private String longitude;
+
+    // Address location of the device: latitude
+    private String latitude;
+
+}
