@@ -1,17 +1,18 @@
 package com.codepay.openapi.request;
 
+import com.codepay.openapi.request.OpenApiRequest;
 import com.codepay.openapi.response.PayMerchantCheckoutResponse;
+import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 /**
  * @Auther: liqie
  * @Date: 2024/7/22 16:40
- * @Description: For merchants using the merchant-hosted checkout for payment, submit the order information and card details to CodePay. CodePay will
- * process the payment immediately and return the payment result synchronously. If 3DS authentication is required, the redirect_url_3dsecure will be
- * returned. Please redirect the user’s request to this URL. After completing the authentication, CodePay will redirect to the merchant’s return_url.
- * Please handle asynchronous notifications and actively query the order to obtain the payment result.
+ * @Description: For merchants using the merchant-hosted checkout for payment, submit the order information and card details to AddPay. PayCloud will process the payment immediately and return the payment result synchronously.
+ * If 3DS authentication is required, the redirect_url_3dsecure will be returned. Please redirect the user’s request to this URL. After completing the authentication, PayCloud will redirect to the merchant’s return_url. Please handle asynchronous notifications and actively query the order to obtain the payment result.
  */
+@Getter
 @Setter
 @ToString
 public class PayMerchantCheckoutRequest extends OpenApiRequest<PayMerchantCheckoutResponse> {
@@ -36,7 +37,8 @@ public class PayMerchantCheckoutRequest extends OpenApiRequest<PayMerchantChecko
     // Order payment timeout period, after which the order can no longer be paid or cancelled and the order will be closed, the unit of this time is: second
     private Integer expires;
 
-    // Bank card payment details. Please encrypt the card_info using CodePay's public key
+    //Bank card payment details. Please encrypt the card_info using PayCloud's public key "gateway_rsa_public_key". Convert the card to a string first, then encrypt the entire string.
+    private String card;
 
     // Merchant store identification code, which can be added through the merchant platform, used to record merchant transaction data in a more detailed dimension,
     // and facilitate merchants to conduct reconciliation and management
@@ -60,5 +62,8 @@ public class PayMerchantCheckoutRequest extends OpenApiRequest<PayMerchantChecko
 
     // Address location of the device: latitude
     private String latitude;
+
+    // Data encryption methods, available options: RSA, AES.
+    private String enc_type;
 
 }

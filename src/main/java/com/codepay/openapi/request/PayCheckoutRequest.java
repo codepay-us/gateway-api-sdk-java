@@ -8,9 +8,9 @@ import lombok.ToString;
 /**
  * @Auther: liqie
  * @Date: 2024/7/22 16:40
- * @Description: The merchant wants to use CodePay's hosted checkout for payment, redirecting users to CodePay's checkout page. To achieve this functionality,
- * the merchant can request this API. It will collect the user's order information, save the order within the CodePay system, and synchronously return the
- * checkout page URL "pay_url". The merchant can then redirect users to this page, where users will input their payment details and complete the payment.
+ * @Description: The merchant wants to use PayCloud's hosted checkout for payment, redirecting users to PayCloud's checkout page. To achieve this functionality,
+ * the merchant can request this API. It will collect the user's order information, save the order within the PayCloud system, and synchronously return the checkout page URL "pay_url".
+ * The merchant can then redirect users to this page, where users will input their payment details and complete the payment.
  */
 @Getter
 @Setter
@@ -60,7 +60,7 @@ public class PayCheckoutRequest extends OpenApiRequest<PayCheckoutResponse> {
     // Address location of the device: latitude
     private String latitude;
 
-    // To specify certain payment options, the CodePay checkout will only display the corresponding payment methods to the user. If this parameter is not set, all payment options
+    // To specify certain payment options, the AddPay checkout will only display the corresponding payment methods to the user. If this parameter is not set, all payment options
     // already enabled by the merchant will be displayed. Please refer to the PayOption for the enumeration values of payment options. Multiple values should be separated by commas.
     private String pay_options;
 

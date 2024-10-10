@@ -19,7 +19,7 @@ public class PayMerchantCheckoutResponse extends OpenApiResponse {
     // Transaction status, 9-Order created;  0-Paying or refunding; 1-Transaction closed; 2-Transaction successful; 3-Transaction cancelled;
     private Integer trans_status;
 
-    // The payment address for the current order on the CodePay checkout. Merchants should redirect user requests to this page to complete the remaining payment process.
+    // The payment address for the current order on the PayCloud checkout. Merchants should redirect user requests to this page to complete the remaining payment process.
     private String redirect_url_3dsecure;
 
     // The serial number of the payment channel, such as WeChat, Alipay, Visa, MasterCard and other payment platforms
