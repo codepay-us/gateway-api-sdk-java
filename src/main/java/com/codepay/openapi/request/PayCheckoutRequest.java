@@ -64,4 +64,7 @@ public class PayCheckoutRequest extends OpenApiRequest<PayCheckoutResponse> {
     // already enabled by the merchant will be displayed. Please refer to the PayOption for the enumeration values of payment options. Multiple values should be separated by commas.
     private String pay_options;
 
+    // For future expansion, a reserved parameter, which is a JSONObject, will have its JSON keys defined in the future.
+    private String ext_params;
+
 }
