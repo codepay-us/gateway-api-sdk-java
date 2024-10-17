@@ -38,7 +38,7 @@ public class TestSample {
         ext_params.put("auth_indicator", "CrdOnFile");
         ext_params.put("stored_cred_ind", "Initial"); // Initial/Subsequent
         ext_params.put("cof_sched_ind", "Scheduled"); // Scheduled/Unscheduled
-        ext_params.put("citmit_frame_ind", ""); // C101/M101
+        ext_params.put("citmit_frame_ind", "C101"); // C101/M101
         request.setExt_params(ext_params.toJSONString());
 
         PayCheckoutResponse response;
