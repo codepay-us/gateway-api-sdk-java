@@ -39,11 +39,11 @@ public class TestSample {
         request.setLongitude("22.9375");
 
         JSONObject ext_params = new JSONObject();
-        ext_params.put("service_entry_mode", "010");
+        ext_params.put("service_entry_mode", "010/100");
         ext_params.put("tran_init", "Customer/Merchant");
         ext_params.put("auth_indicator", "CrdOnFile");
         ext_params.put("stored_cred_ind", "Initial/Subsequent");
-        ext_params.put("cof_sched_ind", "Scheduled");
+        ext_params.put("cof_sched_ind", "Scheduled/Unscheduled");
         ext_params.put("citmit_frame_ind", "C101/M101");
         request.setExt_params(ext_params.toJSONString());
 
