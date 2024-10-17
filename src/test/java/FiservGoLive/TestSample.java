@@ -28,23 +28,17 @@ public class TestSample {
         request.setStore_no("4023000004");
         request.setMerchant_order_no("TEST_" + System.currentTimeMillis());
         request.setPrice_currency("USD");
-        request.setOrder_amount(150.34);
-        request.setExpires(300);
-        request.setAttach("{\"key\":\"value\"}");
-        request.setNotify_url("https://m.website.com/pay/notify");
-        request.setReturn_url("https://www.google.com/");
-        request.setTerm_ip("127.0.0.1");
+        request.setOrder_amount(1.0);
+        request.setExpires(3600);
         request.setDescription("IPhone 15 5G White");
-        request.setLatitude("30.5595");
-        request.setLongitude("22.9375");
 
         JSONObject ext_params = new JSONObject();
-        ext_params.put("service_entry_mode", "010/100");
-        ext_params.put("tran_init", "Customer/Merchant");
+        ext_params.put("service_entry_mode", "010"); // 010/100
+        ext_params.put("tran_init", "Customer"); // Customer/Merchant
         ext_params.put("auth_indicator", "CrdOnFile");
-        ext_params.put("stored_cred_ind", "Initial/Subsequent");
-        ext_params.put("cof_sched_ind", "Scheduled/Unscheduled");
-        ext_params.put("citmit_frame_ind", "C101/M101");
+        ext_params.put("stored_cred_ind", "Initial"); // Initial/Subsequent
+        ext_params.put("cof_sched_ind", "Scheduled"); // Scheduled/Unscheduled
+        ext_params.put("citmit_frame_ind", ""); // C101/M101
         request.setExt_params(ext_params.toJSONString());
 
         PayCheckoutResponse response;
