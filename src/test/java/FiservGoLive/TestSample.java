@@ -32,13 +32,13 @@ public class TestSample {
         request.setExpires(3600);
         request.setDescription("IPhone 15 5G White");
 
-        JSONObject ext_params = new JSONObject();
-        ext_params.put("service_entry_mode", "010"); // 010/100
-        ext_params.put("tran_init", "Customer"); // Customer/Merchant
-        ext_params.put("auth_indicator", "CrdOnFile"); // CrdOnFile
-        ext_params.put("stored_cred_ind", "Initial"); // Initial/Subsequent
-        ext_params.put("cof_sched_ind", "Scheduled"); // Scheduled/Unscheduled
-        request.setExt_params(ext_params.toJSONString());
+//        JSONObject ext_params = new JSONObject();
+//        ext_params.put("service_entry_mode", "010"); // 010/100
+//        ext_params.put("tran_init", "Customer"); // Customer/Merchant
+//        ext_params.put("auth_indicator", "CrdOnFile"); // CrdOnFile
+//        ext_params.put("stored_cred_ind", "Initial"); // Initial/Subsequent
+//        ext_params.put("cof_sched_ind", "Scheduled"); // Scheduled/Unscheduled
+//        request.setExt_params(ext_params.toJSONString());
 
         PayCheckoutResponse response;
         try {
