@@ -67,4 +67,7 @@ public class PayCheckoutRequest extends OpenApiRequest<PayCheckoutResponse> {
     // For future expansion, a reserved parameter, which is a JSONObject, will have its JSON keys defined in the future.
     private String ext_params;
 
+    // Specify whether to collect the shipping address on the checkout page
+    private Boolean collect_shipping;
+
 }

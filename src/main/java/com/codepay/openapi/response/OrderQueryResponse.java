@@ -119,4 +119,10 @@ public class OrderQueryResponse extends OpenApiResponse {
     // Cardholder Electronic Signature Image URL
     private String electron_sign_url;
 
+    // Billing Address
+    private String billing_address;
+
+    // Shipping Address
+    private String shipping_address;
+
 }

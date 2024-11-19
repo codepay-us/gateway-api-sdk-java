@@ -1,6 +1,5 @@
 package com.codepay.openapi.request;
 
-import com.codepay.openapi.request.OpenApiRequest;
 import com.codepay.openapi.response.PayMerchantCheckoutResponse;
 import lombok.Getter;
 import lombok.Setter;
@@ -39,6 +38,9 @@ public class PayMerchantCheckoutRequest extends OpenApiRequest<PayMerchantChecko
 
     //Bank card payment details. Please encrypt the card_info using PayCloud's public key "gateway_rsa_public_key". Convert the card to a string first, then encrypt the entire string.
     private String card;
+
+    // Billing Address
+    private String billing_address;
 
     // Merchant store identification code, which can be added through the merchant platform, used to record merchant transaction data in a more detailed dimension,
     // and facilitate merchants to conduct reconciliation and management
