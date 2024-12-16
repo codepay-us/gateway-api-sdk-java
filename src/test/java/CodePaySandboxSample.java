@@ -1,11 +1,14 @@
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.codepay.openapi.OpenApiClient;
 import com.codepay.openapi.OpenApiException;
 import com.codepay.openapi.encryption.AESEncryptionUtil;
 import com.codepay.openapi.encryption.RSAEncryptionUtil;
+import com.codepay.openapi.request.PayCheckoutRequest;
 import com.codepay.openapi.request.PayMerchantCheckoutRequest;
 import com.codepay.openapi.request.WisehubCloudPayOrderRequest;
+import com.codepay.openapi.response.PayCheckoutResponse;
 import com.codepay.openapi.response.PayMerchantCheckoutResponse;
 import com.codepay.openapi.response.WisehubCloudPayOrderResponse;
 import com.codepay.openapi.utils.EAuthType;
@@ -109,6 +112,207 @@ public class CodePaySandboxSample {
         try {
             // Execute the request
             response = openapiClient.execute(request, EAuthType.BASIC_AUTH);
+        } catch (OpenApiException e) {
+            // Handle network exceptions ......
+            // @TODO
+            System.err.println("\nrequest api error:" + e.getErrCode() + "->>" + e.getErrMsg());
+            return;
+        }
+        if (!response.isSuccess()) {
+            // Handle business exceptions ......
+            // @TODO
+            System.err.println("\napi execute error:  " + JSON.toJSONString(response));
+        }
+
+        // Write your business code based on the API response ......
+        // @TODO
+    }
+
+
+    @Test
+    public void CheckoutRSA() {
+        // Instantiate a client
+        OpenApiClient openapiClient = new OpenApiClient(APP_ID, SANDBOX_GATEWAY_URL, APP_RSA_PRIVATE_KEY, GATEWAY_RSA_PUBLIC_KEY, null, null);
+
+        // Build a request object, set parameters
+        PayCheckoutRequest request = new PayCheckoutRequest();
+        request.setMerchant_no("302300000342");
+        request.setMerchant_order_no("TEST_" + System.currentTimeMillis());
+        request.setPrice_currency("USD");
+        request.setOrder_amount(150.34);
+        // other parameters ......
+
+        PayCheckoutResponse response;
+        try {
+            // Execute the request
+            response = openapiClient.execute(request, EAuthType.RSA2);
+        } catch (OpenApiException e) {
+            // Handle network exceptions ......
+            // @TODO
+            System.err.println("\nrequest api error:" + e.getErrCode() + "->>" + e.getErrMsg());
+            return;
+        }
+        if (!response.isSuccess()) {
+            // Handle business exceptions ......
+            // @TODO
+            System.err.println("\napi execute error:  " + JSON.toJSONString(response));
+        }
+
+        // Write your business code based on the API response ......
+        // @TODO
+    }
+
+
+    @Test
+    public void CheckoutBasic() {
+        // Instantiate a client
+        OpenApiClient openapiClient = new OpenApiClient(APP_ID, SANDBOX_GATEWAY_URL, null, null, "123456", "uiohajzklllz");
+
+        // Build a request object, set parameters
+        PayCheckoutRequest request = new PayCheckoutRequest();
+        request.setMerchant_no("302300000342");
+        request.setMerchant_order_no("TEST_" + System.currentTimeMillis());
+        request.setPrice_currency("USD");
+        request.setOrder_amount(150.34);
+        request.setDescription("Iphone 16");
+        JSONObject order_detail = new JSONObject();
+        order_detail.put("type", "GENERAL");
+        JSONObject data = new JSONObject();
+        JSONArray items = new JSONArray();
+        JSONObject item = new JSONObject();
+        item.put("code", "C001787199");
+        item.put("quantity", 2);
+        item.put("unit_price", 150.34);
+        item.put("amount", 300.68);
+        item.put("name", "Iphone 16");
+        item.put("image", "https://img0.baidu.com/it/u=451654732,3389558718&fm=253&fmt=auto&app=138&f=JPEG?w=607&h=443");
+        items.add(item);
+        JSONObject item1 = new JSONObject();
+        item1.put("code", "C001787198");
+        item1.put("quantity", 1);
+        item1.put("unit_price", 50.01);
+        item1.put("amount", 50.01);
+        item1.put("name", "AirPods 4");
+        item1.put("image", "https://img2.baidu.com/it/u=3979873743,2390981689&fm=253&fmt=auto&app=120&f=JPEG?w=889&h=500");
+        items.add(item1);
+        data.put("items", items);
+        JSONObject shipping = new JSONObject();
+        shipping.put("allow_regions", "[\"US\"]");
+        data.put("shipping", shipping);
+        JSONObject billing = new JSONObject();
+        billing.put("allow_regions", "[\"US\"]");
+        data.put("billing", billing);
+        JSONObject payment = new JSONObject();
+        payment.put("allow_options", "[\"Card\", \"ApplePay\"]");
+        payment.put("disallow_options", "[\"GooglePay\"]");
+        data.put("payment", payment);
+        JSONObject theme = new JSONObject();
+        JSONObject palette = new JSONObject();
+        JSONObject primary = new JSONObject();
+        primary.put("main", "rgb(255,0,0)");
+        primary.put("contrastText", "rgb(230,230,230)");
+        palette.put("primary", primary);
+        JSONObject text = new JSONObject();
+        text.put("primary", "rgb(173,216,230)");
+        palette.put("text", text);
+        theme.put("palette", palette);
+        data.put("theme", theme);
+
+        order_detail.put("data", data);
+        request.setOrder_detail(order_detail.toJSONString());
+        // other parameters ......
+
+        PayCheckoutResponse response;
+        try {
+            // Execute the request
+            response = openapiClient.execute(request, EAuthType.BASIC_AUTH);
+        } catch (OpenApiException e) {
+            // Handle network exceptions ......
+            // @TODO
+            System.err.println("\nrequest api error:" + e.getErrCode() + "->>" + e.getErrMsg());
+            return;
+        }
+        if (!response.isSuccess()) {
+            // Handle business exceptions ......
+            // @TODO
+            System.err.println("\napi execute error:  " + JSON.toJSONString(response));
+        }
+
+        // Write your business code based on the API response ......
+        // @TODO
+    }
+
+    @Test
+    public void CheckoutRSAE() throws Exception {
+        // Instantiate a client
+        OpenApiClient openapiClient = new OpenApiClient(APP_ID, SANDBOX_GATEWAY_URL, APP_RSA_PRIVATE_KEY, GATEWAY_RSA_PUBLIC_KEY, null, null);
+
+        // Build a request object, set parameters
+        PayMerchantCheckoutRequest request = new PayMerchantCheckoutRequest();
+        request.setMerchant_no("302300000342");
+        request.setMerchant_order_no("TEST_" + System.currentTimeMillis());
+        request.setPrice_currency("USD");
+        request.setOrder_amount(150.34);
+
+        JSONObject card = new JSONObject();
+        card.put("card_type", "CREDIT");
+        card.put("pan", "6011208701112222");
+        card.put("expiry", "1225");
+        card.put("cvv", "1224");
+        card.put("holder", "jack");
+
+        request.setEnc_type(EENCType.RSA.getValue());
+        request.setCard(RSAEncryptionUtil.encryptByPublicKey(card.toJSONString().getBytes(), GATEWAY_RSA_PUBLIC_KEY));
+        // other parameters ......
+
+        PayMerchantCheckoutResponse response;
+        try {
+            // Execute the request
+            response = openapiClient.execute(request, EAuthType.RSA2);
+        } catch (OpenApiException e) {
+            // Handle network exceptions ......
+            // @TODO
+            System.err.println("\nrequest api error:" + e.getErrCode() + "->>" + e.getErrMsg());
+            return;
+        }
+        if (!response.isSuccess()) {
+            // Handle business exceptions ......
+            // @TODO
+            System.err.println("\napi execute error:  " + JSON.toJSONString(response));
+        }
+
+        // Write your business code based on the API response ......
+        // @TODO
+    }
+
+
+    @Test
+    public void CheckoutAESE() throws Exception {
+        // Instantiate a client
+        OpenApiClient openapiClient = new OpenApiClient(APP_ID, SANDBOX_GATEWAY_URL, APP_RSA_PRIVATE_KEY, GATEWAY_RSA_PUBLIC_KEY, null, null);
+
+        // Build a request object, set parameters
+        PayMerchantCheckoutRequest request = new PayMerchantCheckoutRequest();
+        request.setMerchant_no("302300000342");
+        request.setMerchant_order_no("TEST_" + System.currentTimeMillis());
+        request.setPrice_currency("USD");
+        request.setOrder_amount(150.34);
+
+        JSONObject card = new JSONObject();
+        card.put("card_type", "CREDIT");
+        card.put("pan", "6011208701112222");
+        card.put("expiry", "1225");
+        card.put("cvv", "1224");
+        card.put("holder", "jack");
+
+        request.setEnc_type(EENCType.AES.getValue());
+        request.setCard(AESEncryptionUtil.encrypt(card.toJSONString(), AESEncryptionUtil.decodeKeyFromBase64(APP_AES_KEY)));
+        // other parameters ......
+
+        PayMerchantCheckoutResponse response;
+        try {
+            // Execute the request
+            response = openapiClient.execute(request, EAuthType.RSA2);
         } catch (OpenApiException e) {
             // Handle network exceptions ......
             // @TODO

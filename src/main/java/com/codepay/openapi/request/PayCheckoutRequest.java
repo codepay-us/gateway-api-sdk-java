@@ -60,14 +60,10 @@ public class PayCheckoutRequest extends OpenApiRequest<PayCheckoutResponse> {
     // Address location of the device: latitude
     private String latitude;
 
-    // To specify certain payment options, the AddPay checkout will only display the corresponding payment methods to the user. If this parameter is not set, all payment options
-    // already enabled by the merchant will be displayed. Please refer to the PayOption for the enumeration values of payment options. Multiple values should be separated by commas.
-    private String pay_options;
-
     // For future expansion, a reserved parameter, which is a JSONObject, will have its JSON keys defined in the future.
     private String ext_params;
 
-    // Specify whether to collect the shipping address on the checkout page
-    private Boolean collect_shipping;
+    // Order details, including product list, logistics configuration, billing address settings, payment options, and interface theme configuration.
+    private String order_detail;
 
 }
